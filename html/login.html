@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+		<link rel="stylesheet" href="../css/login_style.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../css/login_style.css">
-</head>
+	<body>
+		<main>
+			<form class="card">
+				<h1><i class="bi bi-door-open"></i> Login</h1>
 
-<body>
+				<div class="label-container">
+					<label for="user" class="icon-label"><i class="bi bi-people-fill"></i></label>
+					<input type="text" placeholder="User" name="user" required />
+				</div>
 
-    <main>
+				<div class="label-container">
+					<label for="password" class="icon-label"><i class="bi bi-file-lock2-fill"></i></label>
+					<input type="password" placeholder=" Password" name="password" id="password" required />
+				</div>
+				<div class="label-container">
+					<input type="checkbox" name="checkbox" id="checkbox" />
+					<label for="checkbox">Remember me</label>
+				</div>
 
-        <form class="card">
+				<button><i class="bi bi-check-circle-fill"></i> <span> LOGIN </span></button>
 
-            <h1><i class="bi bi-door-open"></i> Login</h1>
-            <input type="text" placeholder="👤 User" name="user" required>
-            <input type="password" placeholder="🔒 Password" name="password" required>
-
-            <label style="display:flex; align-items:center;">Rememberme <input type="checkbox" name=""
-                    id="test"></label>
-                    
-            <button> <i class="bi bi-check-circle-fill"></i> <span> LOGIN </span> </button>
-
-
-
-            <div class="options">
-                <small><a href="#">Olvide mi password</a></small>
-                <small><a href="#">Registrarse</a></small>
-            </div>
-
-        </form>
-    </main>
-
-</body>
-
+				<div class="options">
+					<small><a href="#">Forgot Password?</a></small>
+					<small><a href="#">Sign up</a></small>
+				</div>
+			</form>
+		</main>
+	</body>
 </html>
