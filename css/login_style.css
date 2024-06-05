@@ -22,20 +22,19 @@ form {
     flex-direction: column;
     color: black;
     padding: 40px;
-    row-gap: 15px;
+    row-gap: 30px;
     align-items: center;
     box-sizing: border-box;
 }
 
 input {
     font-family: "Poppins", sans-serif;
-    border-radius: 0 5px 5px 0;
+    border-radius: 10px;
     border: 1px solid;
     height: 35px;
     padding: 5px;
     transition: 0.2s;
     width: 100%;
-    border-left: none;
     transition: .3s ease;
 }
 
@@ -72,35 +71,37 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
-    animation: ease-in;
     background-color: #212529;
     color: whitesmoke;
-    animation: background-color 0.2s erase;
+    animation: cubic-bezier( 0, 0.89, 1, 0.94 );
+    transition: .2s;
 }
 
 button:hover {
     scale: 1.1;
     background-color: #025C3B;
-    transition: 0.2s;
     color: whitesmoke;
 }
 
 button i {
-    display: none;
+    opacity: 0;
     color: whitesmoke;
+    transition: .2s;
+    animation: ease-in;
+    margin-left: -1rem;
+}
+
+button:hover i {
+    opacity: 1;
 }
 
 button span {
-    transition: margin-left 0.2s ease-in-out;
+    transition:0.2s ease-in-out;
 }
 
 button:hover span {
     opacity: 1;
-    margin-left: .2rem;
-}
-
-button:hover i {
-    display: contents;
+    margin-left: .5rem;
 }
 
 /* Glassmorphism card effect */
@@ -112,13 +113,6 @@ button:hover i {
     border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
-.options {
-    display: flex;
-    column-gap: 15px;
-    align-items: center;
-    flex-wrap: wrap;
-    cursor: pointer;
-}
 
 form a {
     color: #272727;
@@ -132,3 +126,27 @@ form a:hover {
 form h1 {
     cursor: context-menu;
 }
+
+.label{
+    width: max-content;
+    display: grid;
+    grid-template-areas: "input";
+}
+
+.input {
+    grid-area: input;
+}
+
+.label__name{
+    grid-area: input;
+    z-index: 1;
+    margin-left: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: .2s;
+}
+
+.input:focus + .label__name,
+.input:not(:placeholder-shown) + .label__name
+{transform: translateY(-80%) scale(.8);}
