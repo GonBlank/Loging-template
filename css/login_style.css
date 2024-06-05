@@ -60,7 +60,7 @@ input[type=checkbox] {
     width: 100%;
 }
 
-button {
+.login-btn {
     font-family: "Poppins", sans-serif;
     height: 35px;
     border-radius: 5px;
@@ -73,13 +73,13 @@ button {
     transition: .2s;
 }
 
-button:hover {
+.login-btn:hover {
     scale: 1.1;
     background-color: #025C3B;
     color: whitesmoke;
 }
 
-button i {
+.login-btn i {
     opacity: 0;
     color: whitesmoke;
     transition: .2s;
@@ -87,15 +87,15 @@ button i {
     margin-left: -1rem;
 }
 
-button:hover i {
+.login-btn:hover i {
     opacity: 1;
 }
 
-button span {
+.login-btn span {
     transition:0.2s ease-in-out;
 }
 
-button:hover span {
+.login-btn:hover span {
     opacity: 1;
     margin-left: .5rem;
 }
@@ -108,7 +108,6 @@ button:hover span {
     border-radius: 12px;
     border: 1px solid rgba(209, 213, 219, 0.3);
 }
-
 
 form a {
     color: #272727;
@@ -147,3 +146,76 @@ form h1 {
 .input:not(:placeholder-shown) + .label__name
 {transform: translateY(-80%) scale(.9);
 }
+
+
+/*Modal*/
+
+.modal-btn{
+    background-color: transparent;
+    color: black;
+    border: none;
+    font: inherit;
+    text-decoration: underline;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Stay in place */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation: blurring 0.4s ease;
+    animation-fill-mode:forwards;
+  }
+
+  @keyframes blurring {
+    from {
+        backdrop-filter: blur(0px) saturate(180%);
+    }
+    to {
+        backdrop-filter: blur(2px) saturate(180%);
+    }
+}
+
+  /* Modal Content */
+  .modal-content {
+    border-radius: 10px;
+    background-color: #fefefee3;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+    animation: appear 0.4s ease; /* Animación de deslizamiento */
+
+  }
+  
+  @keyframes appear {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
