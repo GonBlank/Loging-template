@@ -22,9 +22,13 @@ form {
     flex-direction: column;
     color: black;
     padding: 40px;
+    margin: 5px;
     row-gap: 30px;
     align-items: center;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 400px;
+    min-width: 230px;
 }
 
 input {
@@ -33,7 +37,6 @@ input {
     border: 1px solid;
     height: 35px;
     padding: 5px;
-    transition: 0.2s;
     width: 100%;
     transition: .3s ease;
 }
@@ -48,20 +51,13 @@ input[type=checkbox] {
     accent-color: #212529;
 }
 
-.label-container {
+.label-checkbox {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-}
-
-.icon-label {
-    display: flex;
-    align-items: center;
-    border: 1px solid black;
-    height: 35px;
-    padding: 5px;
 }
 
 button {
@@ -128,7 +124,7 @@ form h1 {
 }
 
 .label{
-    width: max-content;
+    width: 100%;
     display: grid;
     grid-template-areas: "input";
 }
@@ -149,4 +145,5 @@ form h1 {
 
 .input:focus + .label__name,
 .input:not(:placeholder-shown) + .label__name
-{transform: translateY(-80%) scale(.8);}
+{transform: translateY(-80%) scale(.9);
+}
