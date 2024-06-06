@@ -36,6 +36,7 @@ input {
     border-radius: 10px;
     border: 1px solid;
     height: 45px;
+    padding-left: 10px;
     transition: .3s ease;
 }
 
