@@ -28,24 +28,25 @@
 			<h1><i class="bi bi-door-open"></i> Login</h1>
 
 			<label class="label">
-				<input type="email" placeholder=" " class="input" id="login-email" required />
+				<input tabindex="1" type="email" placeholder=" " class="input" id="login-email" required />
 				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
 			</label>
 
 			<label class="label">
-				<input type="password" placeholder=" " class="input" id="login-password" required />
+				<input tabindex="2" type="password" placeholder=" " class="input" id="login-password" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
 			<div class="checkbox-wrapper-13">
-				<input id="c1-13" type="checkbox">
+				<input tabindex="3" id="c1-13" type="checkbox">
 				<label for="c1-13">Remember me</label>
-			  </div>
+			</div>
 
-			<button class="form-btn login-btn" type="submit"><i class="bi bi-arrow-return-right"></i> <span> LOGIN
+			<button tabindex="4" class="form-btn login-btn" type="submit"><i class="bi bi-arrow-return-right"></i>
+				<span> LOGIN
 				</span></button>
-			<small><a href="#" id="show-password-recovery-modal">Forgot Password?</a></small>
-			<small><a href="#" id="show-sign-up-modal">Sign up</a></small>
+			<small><a tabindex="5" href="#" id="show-password-recovery-modal">Forgot Password?</a></small>
+			<small><a tabindex="6" href="#" id="show-sign-up-modal">Sign up</a></small>
 		</form>
 	</main>
 </body>
@@ -61,7 +62,7 @@
 			<h1><i class="bi bi-person-raised-hand"></i> Sign up</h1>
 
 			<label class="label">
-				<input type="email" placeholder=" " class="input" id="sign-up-name" required />
+				<input type="text" placeholder=" " class="input" id="sign-up-name" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-person-circle"></i> Name</span>
 			</label>
 
@@ -88,7 +89,8 @@
 <div id="password-recovery-modal" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
-		<span class="close password-recovery-close" id="password-recovery-modal-close"><i class="bi bi-x-circle-fill"></i></span>
+		<span class="close password-recovery-close" id="password-recovery-modal-close"><i
+				class="bi bi-x-circle-fill"></i></span>
 
 		<form>
 			<span>
