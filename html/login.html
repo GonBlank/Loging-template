@@ -44,8 +44,8 @@
 
 			<button class="form-btn login-btn" type="submit"><i class="bi bi-arrow-return-right"></i> <span> LOGIN
 				</span></button>
-			<small><a href="#">Forgot Password?</a></small>
-			<small><a href="#" id="sign-up-modal-btn">Sign up</a></small>
+			<small><a href="#" id="show-password-recovery-modal">Forgot Password?</a></small>
+			<small><a href="#" id="show-sign-up-modal">Sign up</a></small>
 		</form>
 	</main>
 </body>
@@ -55,7 +55,7 @@
 <div id="sign-up-modal" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
-		<span class="close"><i class="bi bi-x-circle-fill"></i></span>
+		<span class="close sign-up-close" id="sign-up-modal-close"><i class="bi bi-x-circle-fill"></i></span>
 
 		<form>
 			<h1><i class="bi bi-person-raised-hand"></i> Sign up</h1>
@@ -75,7 +75,8 @@
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
-			<button class="form-btn signup-btn" id="sign-up-btn" type="submit"><i class="bi bi-arrow-return-right"></i><span> Sign up
+			<button class="form-btn signup-btn" id="sign-up-btn" type="submit"><i
+					class="bi bi-arrow-return-right"></i><span> Sign up
 				</span></button>
 
 		</form>
@@ -84,11 +85,28 @@
 </div>
 
 <!-- The Modal -->
-<div id="recovery-password-modal" class="modal">
+<div id="password-recovery-modal" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
-		<span class="close">&times;</span>
-		<p>Modar for restore your password..</p>
+		<span class="close password-recovery-close" id="password-recovery-modal-close"><i class="bi bi-x-circle-fill"></i></span>
+
+		<form>
+			<span>
+				<h2><i class="bi bi-file-lock2-fill"></i> Password recovery</h2>
+				<small>
+					<p>Enter your email to recover your password</p>
+				</small>
+			</span>
+			<label class="label">
+				<input type="email" placeholder=" " class="input" id="password-recovery-email" required />
+				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
+			</label>
+
+			<button class="form-btn password-recovery-btn" id="password-recovery-btn" type="submit"><i
+					class="bi bi-key-fill"></i><span> Recover password
+				</span></button>
+
+		</form>
 	</div>
 </div>
 
