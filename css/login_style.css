@@ -61,7 +61,7 @@ input[type=checkbox] {
     width: 100%;
 }
 
-.label-checkbox label{
+.label-checkbox label {
     cursor: pointer;
 }
 
@@ -74,16 +74,17 @@ input[type=checkbox] {
     width: 100%;
     background-color: #212529;
     color: whitesmoke;
-    animation: cubic-bezier( 0, 0.89, 1, 0.94 );
+    animation: cubic-bezier(0, 0.89, 1, 0.94);
     transition: .2s;
 }
 
-.login-btn:hover{
+.login-btn:hover {
     background-color: #025C3B;
     color: whitesmoke;
 }
 
-.signup-btn:hover , .password-recovery-btn:hover{
+.signup-btn:hover,
+.password-recovery-btn:hover {
     background-color: #2e516b;
 }
 
@@ -104,7 +105,7 @@ input[type=checkbox] {
 }
 
 .form-btn span {
-    transition:0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
 }
 
 .form-btn:hover span {
@@ -130,11 +131,13 @@ form a:hover {
     filter: drop-shadow(0px 0px 5px #272727);
 }
 
-form h1, h2, p {
+form h1,
+h2,
+p {
     cursor: context-menu;
 }
 
-.label{
+.label {
     width: 100%;
     display: grid;
     grid-template-areas: "input";
@@ -144,7 +147,7 @@ form h1, h2, p {
     grid-area: input;
 }
 
-.label__name{
+.label__name {
     grid-area: input;
     z-index: 1;
     margin-left: 1rem;
@@ -155,15 +158,15 @@ form h1, h2, p {
     cursor: pointer;
 }
 
-.input:focus + .label__name,
-.input:not(:placeholder-shown) + .label__name
-{transform: translateY(-80%) scale(.9);
+.input:focus+.label__name,
+.input:not(:placeholder-shown)+.label__name {
+    transform: translateY(-80%) scale(.9);
 }
 
 
 /*Modal*/
 
-.modal-btn{
+.modal-btn {
     background-color: transparent;
     color: black;
     border: none;
@@ -171,26 +174,8 @@ form h1, h2, p {
     text-decoration: underline;
 }
 
-
-/* The Modal (background) */
-.modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: fixed; /* Stay in place */
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    animation: blurring .2s ease;
-    animation-fill-mode:forwards;
-  }
-
-  @keyframes blurring {
+/* Blurring animation for opening the modal */
+@keyframes blurring {
     from {
         backdrop-filter: blur(0px) saturate(180%);
     }
@@ -199,8 +184,45 @@ form h1, h2, p {
     }
 }
 
-  /* Modal Content */
-  .modal-content {
+/* Deblurring animation for closing the modal */
+@keyframes deblurring {
+    from {
+        backdrop-filter: blur(2px) saturate(180%);
+    }
+    to {
+        backdrop-filter: blur(0px) saturate(180%);
+    }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Apply the blurring animation */
+.modal.blurring {
+    animation: blurring 500ms ease forwards;
+}
+
+/* Apply the deblurring animation */
+.modal.deblurring {
+    animation: deblurring 500ms ease forwards;
+}
+
+/* Modal Content */
+.modal-content {
     border-radius: 10px;
     background-color: #fefefef6;
     margin: auto;
@@ -210,9 +232,9 @@ form h1, h2, p {
     width: 100%;
     max-width: 400px;
     min-width: 230px;
-  }
-  
-  @keyframes appear {
+}
+
+@keyframes appear {
     from {
         transform: scale(0);
     }
@@ -220,6 +242,7 @@ form h1, h2, p {
         transform: scale(1);
     }
 }
+
 @keyframes disappear {
     from {
         transform: scale(1);
@@ -230,22 +253,21 @@ form h1, h2, p {
 }
 
 .modal-content.disappearing {
-    animation: disappear 500ms cubic-bezier(0, 1.2, 0.13, 0.96);
+    animation: disappear 200ms cubic-bezier(0, 1.2, 0.13, 0.96);
     animation-fill-mode: forwards;
 }
 
-  /* The Close Button */
-  .close {
+/* The Close Button */
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
-
+}
