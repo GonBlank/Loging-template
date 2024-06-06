@@ -38,7 +38,6 @@ input {
     border-radius: 10px;
     border: 1px solid;
     height: 45px;
-    padding-left: 10px;
     transition: .3s ease;
 }
 
@@ -46,24 +45,6 @@ input:hover {
     filter: drop-shadow(0px 0px 5px #898989);
 }
 
-input[type=checkbox] {
-    cursor: pointer;
-    width: 1rem;
-    accent-color: #212529;
-}
-
-.label-checkbox {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-}
-
-.label-checkbox label {
-    cursor: pointer;
-}
 
 .form-btn {
     font-family: "Poppins", sans-serif;
@@ -145,6 +126,7 @@ p {
 
 .input {
     grid-area: input;
+    padding-left: 10px;
 }
 
 .label__name {
@@ -179,6 +161,7 @@ p {
     from {
         backdrop-filter: blur(0px) saturate(180%);
     }
+
     to {
         backdrop-filter: blur(2px) saturate(180%);
     }
@@ -189,6 +172,7 @@ p {
     from {
         backdrop-filter: blur(2px) saturate(180%);
     }
+
     to {
         backdrop-filter: blur(0px) saturate(180%);
     }
@@ -228,7 +212,8 @@ p {
     margin: auto;
     padding: 10px;
     width: 80%;
-    animation: appear .4s cubic-bezier(0, 0.62, 0.27, 0.96); /* Animación de deslizamiento */
+    animation: appear .4s cubic-bezier(0, 0.62, 0.27, 0.96);
+    /* Animación de deslizamiento */
     width: 100%;
     max-width: 400px;
     min-width: 230px;
@@ -238,6 +223,7 @@ p {
     from {
         transform: scale(0);
     }
+
     to {
         transform: scale(1);
     }
@@ -247,6 +233,7 @@ p {
     from {
         transform: scale(1);
     }
+
     to {
         transform: scale(0);
     }
@@ -270,4 +257,110 @@ p {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*--*/
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    .checkbox-wrapper-13 input[type=checkbox] {
+        --active: #212529;
+        --active-inner: #fff;
+        --border: #BBC1E1;
+        --border-hover: #212529;
+        --background: #fff;
+        --disabled: #F6F8FF;
+        --disabled-inner: #E1E6F9;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 21px;
+        outline: none;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:after {
+        content: "";
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transition: transform 0.3s ease, opacity 0.2s;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: .3s;
+        --d-t: .6s;
+        --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:disabled:checked {
+        --b: var(--disabled-inner);
+        --bc: var(--border);
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:disabled+label {
+        cursor: not-allowed;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+        --bc: var(--border-hover);
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:focus {
+        box-shadow: 0 0 0 var(--focus);
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch) {
+        width: 21px;
+        border-radius: 7px;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):after {
+        content: "";
+        display: block;
+        width: 5px;
+        height: 9px;
+        border: 2px solid var(--active-inner);
+        border-top: 0;
+        border-left: 0;
+        left: 7px;
+        top: 4px;
+        transform: rotate(var(--r, 20deg));
+        opacity: var(--o, 0);
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]:not(.switch):checked {
+        --o: 1;
+        --r: 43deg;
+    }
+
+    .checkbox-wrapper-13 input[type=checkbox]+label {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-left: 4px;
+    }
+}
+
+.checkbox-wrapper-13 * {
+    box-sizing: inherit;
+}
+
+.checkbox-wrapper-13 *:before,
+.checkbox-wrapper-13 *:after {
+    box-sizing: inherit;
 }
