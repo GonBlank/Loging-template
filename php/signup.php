@@ -1,6 +1,7 @@
 <?php
 require_once 'env.php';
 require_once 'email.php';
+require_once 'temp_message.php';
 
 
 //Validate request method
@@ -9,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $raw_password = $_POST['password'];
 } else {
-    echo 'invalid Request_method';
+    temp_messaje('Warn', 'Invalid Request_method', 'warn');
     exit;
 }
 
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $password_length = strlen($raw_password);
 if ($password_length < 8 || $password_length > 20) {
     $conn = null;
-    echo "invalid password length";
+    temp_messaje('Warn', 'Invalid password length', 'warn');
     exit;
 }
 
@@ -25,7 +26,7 @@ if ($password_length < 8 || $password_length > 20) {
 // Validate email
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $conn = null;
-    echo "invalid email";
+    temp_messaje('Warn', 'Invalid email format', 'warn');
     exit;
 }
 
@@ -33,10 +34,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 try {
     $conn = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch (PDOException $e) {
-   echo "Database connection failed";
+} catch (PDOException $e) {
+    temp_messaje('Fatal error', "Database connection failed", 'error');
+    error_log("[ERROR]: Connection to the database signup.php" . $e->getMessage());
     $conn = null;
-   
 }
 
 //check if the email already exists in the "users" table
@@ -49,11 +50,12 @@ try {
 
     if ($email_exists) {
         $conn = null;
-        echo "The user $email already exist in the data base.";
-        exit; // Detener la ejecución del script si el correo ya existe en la base de datos
+        temp_messaje('Warn', "The email $email already exist.", 'warn');
+        exit;
     }
 } catch (PDOException $e) {
-    echo "Error checking for duplicate email: " . $e->getMessage();
+    temp_messaje('Fatal error', "Database connection failed", 'error');
+    error_log("[ERROR]:Check if the email already exists in the users table signup.php" . $e->getMessage());
     $conn = null;
 }
 
@@ -77,7 +79,8 @@ try {
     $stmt_insert_user->bindParam(':hash_date', $hash_date);
     $stmt_insert_user->execute();
 } catch (PDOException $e) {
-    echo "Error insert user: " . $e->getMessage();
+    temp_messaje('Fatal error', "Database connection failed", 'error');
+    error_log("[ERROR]: Insert new user signup.php" . $e->getMessage());
     $conn = null;
 }
 
@@ -89,7 +92,8 @@ try {
     $stmt_insert_contact->bindParam(':email', $email);
     $stmt_insert_contact->execute(); // Ejecución de la sentencia preparada
 } catch (PDOException $e) {
-    echo "Error insert contact: " . $e->getMessage();
+    temp_messaje('Fatal error', "Database connection failed", 'error');
+    error_log("[ERROR]: Insert contact user signup.php" . $e->getMessage());
     $conn = null;
 }
 
@@ -98,4 +102,5 @@ try {
 $body = "Please verify your email: http://" . DOMAIN . "/Loging%20template/html/login.html?hash=$validation_hash";
 send_email($body, "Verifique su email", $email);
 $conn = null;
-echo "Created user!";
+
+temp_messaje('User created!', 'Check your email to finish the registration', 'success');
