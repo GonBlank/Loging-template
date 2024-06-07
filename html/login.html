@@ -25,15 +25,15 @@
 <body>
 
 	<div id="alertContainer" class="content-alert">
-	<!--	<div class="card warn alert" style=" opacity: 1;">
+		<!--	<div class="card warn alert" style=" opacity: 1;">
             <h2><i class="bi bi-exclamation-triangle-fill"></i> Warn</h2>
-            <p>The email blanco.gonzalo.v@gmail.com already exist.</p>
+            <p>The email test@gmail.com already exist.</p>
         </div>-->
 	</div>
 
 	<main>
 
-		<form class="card">
+		<form id="login-form" class="card" action="../php/test.php">
 			<h1><i class="bi bi-door-open"></i> Login</h1>
 
 			<label class="label">
@@ -52,9 +52,15 @@
 				<label for="c1-13">Remember me</label>
 			</div>
 
-			<button tabindex="4" class="form-btn login-btn" type="submit"><i class="bi bi-arrow-return-right"></i>
+			<button tabindex="4" class="form-btn login-btn" type="submit" id="submit-login-btn"><i
+					class="bi bi-arrow-return-right"></i>
 				<span> LOGIN
 				</span></button>
+
+			<div id="loading-login-btn" class="content-loading d-none">
+				<div class="loading"><i class="bi bi-hourglass-split"></i></div>
+			</div>
+
 			<small><a tabindex="5" href="#" id="show-password-recovery-modal">Forgot Password?</a></small>
 			<small><a tabindex="6" href="#" id="show-sign-up-modal">Sign up</a></small>
 		</form>
@@ -69,7 +75,7 @@
 	<div class="modal-content">
 		<span class="close sign-up-close" id="sign-up-modal-close"><i class="bi bi-x-circle-fill"></i></span>
 
-		<form action="../php/signup.php" method="post">
+		<form action="../php/signup.php" id="signup-form" method="post">
 			<h1><i class="bi bi-person-raised-hand"></i> Sign up</h1>
 
 			<label class="label">
@@ -88,9 +94,13 @@
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
-			<button class="form-btn signup-btn" id="sign-up-btn" type="submit"><i
+			<button class="form-btn signup-btn" type="submit" id="submit-signup-btn"><i
 					class="bi bi-arrow-return-right"></i><span> Sign up
 				</span></button>
+
+			<div id="loading-signup-btn" class="content-loading d-none">
+				<div class="loading"><i class="bi bi-hourglass-split"></i></div>
+			</div>
 
 		</form>
 
@@ -104,7 +114,7 @@
 		<span class="close password-recovery-close" id="password-recovery-modal-close"><i
 				class="bi bi-x-circle-fill"></i></span>
 
-		<form>
+		<form action="../php/test.php" id="password-recovery-form">
 			<span>
 				<h2><i class="bi bi-file-lock2-fill"></i> Password recovery</h2>
 				<small>
@@ -116,9 +126,13 @@
 				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
 			</label>
 
-			<button class="form-btn password-recovery-btn" id="password-recovery-btn" type="submit"><i
+			<button class="form-btn password-recovery-btn" id="submit-password-recovery-btn" type="submit"><i
 					class="bi bi-key-fill"></i><span> Recover password
 				</span></button>
+
+				<div id="loading-password-recovery-btn" class="content-loading d-none">
+					<div class="loading"><i class="bi bi-hourglass-split"></i></div>
+				</div>
 
 		</form>
 	</div>
@@ -126,5 +140,6 @@
 
 <script src="../js/login-animation-modal.js"></script>
 <script src="../js/login-animation-alert.js"></script>
+<script src="../js/login-animation-load.js"></script>
 
 </html>

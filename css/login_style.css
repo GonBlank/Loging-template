@@ -59,6 +59,7 @@ input:hover {
     transition: .2s;
 }
 
+
 .login-btn:hover {
     background-color: #025C3B;
     color: whitesmoke;
@@ -403,6 +404,7 @@ p {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -414,6 +416,7 @@ p {
         transform: translateY(0);
         opacity: 1;
     }
+
     to {
         transform: translateY(-100%);
         opacity: 0;
@@ -426,4 +429,40 @@ p {
 
 .slide-in {
     animation-name: slideInFromTop;
+}
+
+
+
+.content-loading {
+    border: 1px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 45px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    background-color: #898989;
+    color: whitesmoke;
+}
+
+.loading {
+    opacity: 1;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.d-none {
+    display: none !important;
 }
