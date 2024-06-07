@@ -23,7 +23,16 @@
 </head>
 
 <body>
+
+	<div id="alertContainer" class="content-alert">
+		<div class="card error alert" style="">
+			<h4> <i class="bi bi-patch-check-fill"></i> Error</h4>
+			<p>Something went wrong</p>
+		</div>
+	</div>
+
 	<main>
+
 		<form class="card">
 			<h1><i class="bi bi-door-open"></i> Login</h1>
 
@@ -33,7 +42,8 @@
 			</label>
 
 			<label class="label">
-				<input tabindex="2" type="password" placeholder=" " class="input" id="login-password" required />
+				<input tabindex="2" type="password" placeholder=" " class="input" id="login-password" maxlength="20"
+					minlength="8" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
@@ -49,7 +59,17 @@
 			<small><a tabindex="6" href="#" id="show-sign-up-modal">Sign up</a></small>
 		</form>
 	</main>
+
+
+
+	<div class="content-alert">
+		<button onclick="showAlert('success')">Success Alert</button>
+		<button onclick="showAlert('warn')">Warning Alert</button>
+		<button onclick="showAlert('error')">Error Alert</button>
+	</div>
+
 </body>
+
 
 
 <!-- The Modal -->
@@ -58,21 +78,22 @@
 	<div class="modal-content">
 		<span class="close sign-up-close" id="sign-up-modal-close"><i class="bi bi-x-circle-fill"></i></span>
 
-		<form>
+		<form action="../php/signup.php" method="post">
 			<h1><i class="bi bi-person-raised-hand"></i> Sign up</h1>
 
 			<label class="label">
-				<input type="text" placeholder=" " class="input" id="sign-up-name" required />
+				<input type="text" placeholder=" " class="input" id="sign-up-name" name="name" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-person-circle"></i> Name</span>
 			</label>
 
 			<label class="label">
-				<input type="email" placeholder=" " class="input" id="sign-up-email" required />
+				<input type="email" placeholder=" " class="input" id="sign-up-email" name="email" required />
 				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
 			</label>
 
 			<label class="label">
-				<input type="password" placeholder=" " class="input" id="sign-up-password" required />
+				<input type="password" placeholder=" " class="input" id="sign-up-password" maxlength="20" minlength="8"
+					name="password" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
@@ -113,5 +134,6 @@
 </div>
 
 <script src="../js/login-animation-modal.js"></script>
+<script src="../js/login-animation-alert.js"></script>
 
 </html>
