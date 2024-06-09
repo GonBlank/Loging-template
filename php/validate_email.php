@@ -37,7 +37,7 @@ try {
     exit;
 }
 
-if ($result['count'] < 0) {
+if ($result['count'] <= 0) {
     // The hash does not exist in the table
     $conn = null;
     temp_messaje('Warn', "Invalid token.", 'warn', '../html/login.html');
