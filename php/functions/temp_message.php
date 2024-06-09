@@ -1,6 +1,6 @@
 <?php
 
-function temp_messaje($title, $message, $type)
+function temp_messaje($title, $message, $type, $redirection_to)
 {
 
     // Parámetros para la cookie
@@ -15,6 +15,6 @@ function temp_messaje($title, $message, $type)
 
     // Establecer la cookie con los parámetros
     setcookie('temp_message', $cookieValue, time() + 30, '/'); // Cookie válida por 60 segundos
-    header("Location: ../html/login.html");
+    header("Location: $redirection_to");
     exit;
 }
