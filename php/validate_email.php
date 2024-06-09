@@ -4,7 +4,7 @@ require_once 'functions/temp_message.php';
 
 // Get the hash value of the GET parameter and sanitize it
 if (!isset($_GET['hash']) || empty($_GET['hash'])) {
-    temp_messaje('Warn', "Invalid token.", 'warn', '../html/login.html');
+    temp_message('Warn', "Invalid token.", 'warn', '../html/login.html');
     exit;
 }
 
@@ -19,7 +19,7 @@ try {
 } catch (PDOException $e) {
     $conn = null;
     error_log("[ERROR]: Connection to the database signup.php:" . $e->getMessage());
-    temp_messaje('Fatal error', "Database connection failed", 'error', '../html/login.html');
+    temp_message('Fatal error', "Database connection failed", 'error', '../html/login.html');
     exit;
 }
 
@@ -33,14 +33,14 @@ try {
 } catch (PDOException $e) {
     $conn = null;
     error_log("[ERROR]: Verify the existence of the hash in the table validate_email.php:" . $e->getMessage());
-    temp_messaje('Fatal error', "Database connection failed", 'error', '../html/login.html');
+    temp_message('Fatal error', "Database connection failed", 'error', '../html/login.html');
     exit;
 }
 
 if ($result['count'] <= 0) {
     // The hash does not exist in the table
     $conn = null;
-    temp_messaje('Warn', "Invalid token.", 'warn', '../html/login.html');
+    temp_message('Warn', "Invalid token.", 'warn', '../html/login.html');
     exit;
 }
 
@@ -54,7 +54,7 @@ try {
 } catch (PDOException $e) {
     $conn = null;
     error_log("[ERROR]: Get user data validate_email.php:" . $e->getMessage());
-    temp_messaje('Fatal error', "Database connection failed", 'error', '../html/login.html');
+    temp_message('Fatal error', "Database connection failed", 'error', '../html/login.html');
     exit;
 }
 
@@ -67,7 +67,7 @@ $timeDiff = strtotime($currentDateTime) - strtotime($user['hash_date']);
 //check if the hash expired (time greater than 15 min)
 if ($timeDiff >= 900) {
     $conn = null;
-    temp_messaje('Warn', "Link expired.", 'warn', '../html/login.html');
+    temp_message('Information', "Your link is expired", 'information', '../html/login.html', "To send a new link", "../php/resent_validation_code.php");
     exit;
 }
 
@@ -84,11 +84,11 @@ try {
     $updateStmt->execute();
 
     $conn = null;
-    temp_messaje('Validated email', 'You can now log in!', 'success', '../html/login.html');
+    temp_message('Validated email', 'You can now log in!', 'success', '../html/login.html');
     exit;
 } catch (PDOException $e) {
     $conn = null;
     error_log("[ERROR]: Update the value of valid_email to TRUE and Update the value of validation_hash and hash_date to NULL validate_email.php:" . $e->getMessage());
-    temp_messaje('Fatal error', "Database connection failed", 'error', '../html/login.html');
+    temp_message('Fatal error', "Database connection failed", 'error', '../html/login.html');
     exit;
 }

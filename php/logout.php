@@ -14,6 +14,6 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirigir al usuario a la página de inicio o a cualquier otra página
-header('Location: login.html?result=info&message=Sesión cerrada exitosamente.'); // Cambia "inicio.php" por la página a la que quieras redirigir al usuario
+temp_message('Information', "Session closed correctly", 'information', '../html/login.html');
 exit;
 ?>

@@ -369,68 +369,6 @@ p {
     box-sizing: inherit;
 }
 
-/*alerts*/
-.alert {
-    padding: 10px;
-    animation: slideInFromTop .6s cubic-bezier(0, 0.62, 0.27, 0.96) forwards;
-    position: absolute;
-    margin-top: 10px;
-    box-shadow: 0px 0px 10px 1px #aaaaaa;
-}
-
-.content-alert {
-    height: 100%;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.alert.success h2 i {
-    color: #025C3B;
-}
-
-.alert.warn h2 i {
-    color: #ffc107;
-}
-
-.alert.error h2 i {
-    color: #d32f2f;
-}
-
-
-@keyframes slideInFromTop {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOutToTop {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-}
-
-.slide-out {
-    animation-name: slideOutToTop;
-}
-
-.slide-in {
-    animation-name: slideInFromTop;
-}
-
 
 
 .content-loading {
