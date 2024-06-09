@@ -23,7 +23,7 @@ if ($password_length < 8 || $password_length > 20) {
 }
 
 
-// Validate email
+// Validate email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $conn = null;
     temp_message('Warn', 'Invalid email format', 'warn', '../html/login.html');

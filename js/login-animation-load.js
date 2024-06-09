@@ -20,4 +20,3 @@ document.getElementById('password-recovery-form').addEventListener('submit', fun
     // Mostrar el botón de carga
     document.getElementById('loading-password-recovery-btn').classList.remove('d-none');
 });
-

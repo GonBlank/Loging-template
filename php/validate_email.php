@@ -67,7 +67,7 @@ $timeDiff = strtotime($currentDateTime) - strtotime($user['hash_date']);
 //check if the hash expired (time greater than 15 min)
 if ($timeDiff >= 900) {
     $conn = null;
-    temp_message('Information', "Your link is expired", 'information', '../html/login.html', "To send a new link", "../php/resent_validation_code.php");
+    temp_message('Information', "Your link is expired", 'information', '../html/login.html', "To send a new link", "resend_validation_code.html");
     exit;
 }
 
