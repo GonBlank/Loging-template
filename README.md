@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(60) NOT NULL,
     validation_hash VARCHAR(24) DEFAULT NULL,
-    hash_date DATETIME DEFAULT NULL
+    hash_date DATETIME DEFAULT NULL,
+    cookie_hash VARCHAR(24) DEFAULT NULL
 );
 
 CREATE TABLE IF NOT EXISTS contacts (
