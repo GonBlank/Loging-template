@@ -1,4 +1,6 @@
 <?php
+require_once 'functions/temp_message.php';
+
 session_start(); // Iniciar la sesión si aún no está iniciada
 
 // Eliminar todas las variables de sesión
@@ -14,6 +16,5 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirigir al usuario a la página de inicio o a cualquier otra página
-temp_message('Information', "Session closed correctly", 'information', '../html/login.html');
+temp_message('Success', "Session closed correctly", 'success', '../html/login.html');
 exit;
-?>

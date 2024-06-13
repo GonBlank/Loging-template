@@ -68,7 +68,7 @@ try {
 }
 
 
-if (!$valid_email) {
+if (!$valid_email['valid_email']) {
     // The email is not validated
     $conn = null;
     temp_message('Email not validated', "Please first validate your email", 'information', '../html/login.html', "If you did not receive the validation email", "resend_validation_code.html");
@@ -89,9 +89,9 @@ session_start();
 session_regenerate_id(true); // Regenerate session ID to prevent session fixation
 
 $_SESSION['user'] = [
-    'name' => $usuario['name'],
-    'email' => $usuario['email'],
-    'role' => $usuario['role']
+    'name' => $user['name'],
+    'email' => $user['email'],
+    'role' => $user['role']
 ];
 
 error_log("Authenticated user: " . print_r($_SESSION['user'], true));
