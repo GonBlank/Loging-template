@@ -1,16 +1,31 @@
 <?php
 require_once 'env.php';
+require_once 'email.php';
 require_once 'functions/temp_message.php';
 
-// Get the hash value of the GET parameter and sanitize it
-if (!isset($_GET['hash']) || empty($_GET['hash'])) {
-    temp_message('Warn', "Invalid token.", 'warn', '../html/login.html');
+
+//Validate request method
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    temp_message('Warn', 'Invalid request method', 'warn', '../html/login.html');
     exit;
 }
 
-$validation_hash = filter_var($_GET['hash'], FILTER_UNSAFE_RAW);
-$validation_hash = htmlspecialchars($validation_hash, ENT_QUOTES, 'UTF-8');
+if (!isset($_POST['hash']) || !isset($_POST['password']) ) {
+    temp_message('Warn', 'Invalid request', 'warn', '../html/login.html');
+    exit;
+}
 
+// Validate password length
+$password_length = strlen($_POST['password']);
+
+if ($password_length < 8 || $password_length > 20) {
+    $conn = null;
+    temp_message('Warn', 'Invalid password length', 'warn', '../html/login.html');
+    exit;
+}
+
+$validation_hash = filter_var($_POST['hash'], FILTER_UNSAFE_RAW);
+$hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
 //connection to the database
 try {
@@ -59,22 +74,22 @@ try {
 }
 
 
-
 $currentDateTime = date("Y-m-d H:i:s");
 $timeDiff = strtotime($currentDateTime) - strtotime($user['hash_date']);
-
 
 //check if the hash expired (time greater than 15 min)
 if ($timeDiff >= 900) {
     $conn = null;
-    temp_message('Information', "Your link is expired", 'information', '../html/login.html', "To send a new link", "resend_validation_code.html");
+    temp_message('Warn', "Your link is expired, request a new one.", 'warn', '../html/login.html');
     exit;
 }
 
 
+
 try {
-    // Update the value of valid_email to TRUE
-    $updateStmt = $conn->prepare("UPDATE contacts SET valid_email = TRUE WHERE email = :email");
+    // Update the value of password
+    $updateStmt = $conn->prepare("UPDATE users SET password = :hashed_password WHERE email = :email");
+    $updateStmt->bindParam(':hashed_password', $hashed_password);
     $updateStmt->bindParam(':email', $user['email']);
     $updateStmt->execute();
 
@@ -84,7 +99,7 @@ try {
     $updateStmt->execute();
 
     $conn = null;
-    temp_message('Validated email', 'You can now log in!', 'success', '../html/login.html');
+    temp_message('Updated password', 'You can now log in!', 'success', '../html/login.html');
     exit;
 } catch (PDOException $e) {
     $conn = null;
@@ -92,3 +107,5 @@ try {
     temp_message('Fatal error', "Database connection failed", 'error', '../html/login.html');
     exit;
 }
+
+?>
