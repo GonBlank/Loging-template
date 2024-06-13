@@ -6,11 +6,17 @@ require_once 'functions/temp_message.php';
 
 //Validate request method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!isset($_POST['name']) || !isset($_POST['email']) || !isset($_POST['password'])) {
+        temp_message('Warn', 'Invalid request', 'warn', '../html/login.html');
+        exit;
+    }
+
     $name = $_POST['name'];
     $email = $_POST['email'];
     $raw_password = $_POST['password'];
 } else {
-    temp_message('Warn', 'Invalid Request_method', 'warn', '../html/login.html');
+    temp_message('Warn', 'Invalid request', 'warn', '../html/login.html');
     exit;
 }
 
@@ -106,5 +112,3 @@ $body = "Please verify your email: http://" . DOMAIN . "/Loging%20template/html/
 send_email($body, "Verifique su email", $email);
 $conn = null;
 temp_message('User created!', 'Check your email to finish the registration', 'success', '../html/login.html');
-
-

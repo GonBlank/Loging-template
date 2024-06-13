@@ -3,13 +3,17 @@ require_once 'env.php';
 require_once 'email.php';
 require_once 'functions/temp_message.php';
 
-
-
 //Validate request method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!isset($_POST['email'])) {
+        temp_message('Warn', 'Invalid request', 'warn', '../html/login.html');
+        exit;
+    }
+
     $email = $_POST['email'];
 } else {
-    temp_message('Warn', 'Invalid Request_method', 'warn', '../html/login.html');
+    temp_message('Warn', 'Invalid request method', 'warn', '../html/login.html');
     exit;
 }
 
