@@ -1,5 +1,6 @@
 <?php
 require_once 'env.php';
+require_once 'functions/temp_message.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -33,6 +34,8 @@ function send_email($body, $subject, $client_email)
 
         $mail->send();
     } catch (Exception $e) {
-        echo "[ERROR] EMAIL";
+        error_log("[ERROR]: email.php:" . $e->getMessage());
+        temp_message('Fatal error', "Failed mail sending", 'error', '../html/login.html');
+        exit;
     }
 }

@@ -53,12 +53,6 @@ try {
     $stmt_check_email->bindParam(':email', $email);
     $stmt_check_email->execute();
     $email_exists = $stmt_check_email->fetchColumn();
-
-    if ($email_exists) {
-        $conn = null;
-        temp_message('Information', "The email $email already exist.", 'information', '../html/login.html', "To recover your account", "restore_password.html");
-        exit;
-    }
 } catch (PDOException $e) {
     $conn = null;
     error_log("[ERROR]:Check if the email already exists in the users table signup.php:" . $e->getMessage());
@@ -66,6 +60,11 @@ try {
     exit;
 }
 
+if ($email_exists) {
+    $conn = null;
+    temp_message('Information', "The email $email already exist.", 'information', '../html/login.html', "To recover your account", "restore_password.html");
+    exit;
+}
 
 
 // Generate the password hash
@@ -109,6 +108,6 @@ try {
 
 // send email verification
 $body = "Please verify your email: http://" . DOMAIN . "/Loging%20template/html/login.html?hash=$validation_hash";
-send_email($body, "Verifique su email", $email);
+send_email($body, "Verify your email", $email);
 $conn = null;
 temp_message('User created!', 'Check your email to finish the registration', 'success', '../html/login.html');

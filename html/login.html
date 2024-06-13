@@ -29,18 +29,18 @@
 
 	<main>
 
-		<form id="login-form" class="card" action="../php/test.php">
+		<form id="login-form" class="card" action="../php/login.php" method="post">
 			<h1><i class="bi bi-door-open"></i> Login</h1>
 
 			<label class="label">
-				<input tabindex="1" type="email" placeholder=" " class="input" id="login-email" autocomplete="email"
+				<input tabindex="1" type="email" placeholder=" " class="input" id="login-email" name="email" autocomplete="email"
 					required />
 				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
 			</label>
 
 			<label class="label">
-				<input tabindex="2" type="password" placeholder=" " class="input" id="login-password" maxlength="20"
-					minlength="8" autocomplete="current-password" required />
+				<input tabindex="2" type="password" placeholder=" " class="input" id="login-password" name="password"
+					autocomplete="current-password" required />
 				<span class="label__name"><i style="margin-right: 1rem;" class="bi bi-key-fill"></i> Password</span>
 			</label>
 
@@ -121,8 +121,8 @@
 				</small>
 			</span>
 			<label class="label">
-				<input type="email" name="email" placeholder=" " class="input" id="password-recovery-email" autocomplete="email"
-					required />
+				<input type="email" name="email" placeholder=" " class="input" id="password-recovery-email"
+					autocomplete="email" required />
 				<span class="label__name"> <i style="margin-right: 1rem;" class="bi bi-threads"></i> Email</span>
 			</label>
 
